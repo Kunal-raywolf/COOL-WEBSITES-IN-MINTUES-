@@ -1,12 +1,24 @@
 # raywolf desgins — 3D Soda Interactive Experience
+█████   ██████  ██    ██  ██████    ██████   ███████  ██████  ██  ██████  ██   ██
+██   ██ ██    ██  ██  ██  ██         ██   ██  ██       ██       ██ ██       ███  ██
+██████  ████████   ████   ██████    ██   ██  █████    ██████  ██ ██  ████ ██ █ ██
+██   ██ ██    ██    ██         ██    ██   ██  ██           ██  ██ ██   ██  ██  ███
+██   ██ ██    ██    ██    ██████    ██████   ███████  ██████  ██  ██████  ██   ██
 
-A high-performance, full-viewport 3D web experience created for **raywolf desgins**, showcasing an ultra-modern fictional diet soda beverage with real-time 3D graphics, physics simulations, and seamless multi-page navigation.
+Rays Design is a sleek, production-ready website template built for soda brands, cold drink shops, and beverage ecommerce stores. It combines eye-catching 3D product visuals with a clean, conversion-focused storefront layout.
+
+✨ Features
+🥤 Stunning 3D Product Showcase — interactive soda can visuals
+🛒 Ecommerce Ready — product grid, cart, and checkout UI
+📱 Fully Responsive — looks great on mobile, tablet, and desktop
+⚡ Fast & Lightweight — optimized performance
+🎨 Modern Design — clean typography and vibrant color palette
 
 ![Diet Soda 3D Experience](https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/Green%20Soda.png)
 
 ---
 
-## 🌟 Key Features
+## 🌟 Key Funtioning details : 
 
 ### 1. Interactive 3D Can Hero (`<model-viewer>`)
 - **Real-Time Cursor Tilt:** The center 3D soda can (`deit_soda2.glb`) tracks and tilts smoothly towards mouse coordinates with cubic dampening.
