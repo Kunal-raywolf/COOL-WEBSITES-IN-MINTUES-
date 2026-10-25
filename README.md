@@ -1,13 +1,7 @@
 # raywolf desgins — 3D Soda Interactive Experience 
 <img width="841" height="170" alt="ascii-art-text" src="https://github.com/user-attachments/assets/5cda280d-8adc-4b76-a4c4-03443d4ea8b1" />
                                                                                                                                         ## PREVIEW : https://joyful-sopapillas-3531db.netlify.app                                                                                 
-                                                                                                                                        ✨ Features
-                                                                                                                                        🥤 Stunning 3D Product Showcase — interactive soda can visuals
-🛒 Ecommerce Ready — product grid, cart, and checkout UI
-📱 Fully Responsive — looks great on mobile, tablet, and desktop
-⚡ Fast & Lightweight — optimized performance
-🎨 Modern Design — clean typography and vibrant color palette
-
+                                                                                                                                        
 ![Diet Soda 3D Experience](https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/Green%20Soda.png)
 
 ---
