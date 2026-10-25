@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingredients | raywolf desgins</title>
+    <meta name="description" content="Pure Nature, Zero Compromise. Explore the clean-label ingredients behind raywolf desgins diet soda.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Galada&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #ffffff;
+            --muted-color: rgba(255, 255, 255, 0.7);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --pink-accent: #fbcfe8;
+            --pink-accent-dark: #011d17;
+            --font-main: 'Inter', sans-serif;
+            --font-heading: 'Galada', cursive;
+            --font-nav: 'Manrope', sans-serif;
+            --bg-inner: #0b8a78;
+            --bg-mid: #044e3b;
+            --bg-outer: #011411;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: radial-gradient(circle at center, var(--bg-inner) 0%, var(--bg-mid) 50%, var(--bg-outer) 100%);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.8rem 4%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 200;
+            backdrop-filter: blur(15px);
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 700;
+            font-size: 1.3rem;
+            font-family: var(--font-heading);
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .nav {
+            display: flex;
+            gap: 0.4rem;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0.35rem 0.5rem;
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+        }
+        .nav-item {
+            font-family: var(--font-nav);
+            color: var(--muted-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.5rem 1.15rem;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+        }
+        .nav-item:hover, .nav-item.active {
+            background: var(--pink-accent);
+            color: var(--pink-accent-dark);
+        }
+        .contact-btn {
+            background: rgba(0, 0, 0, 0.55);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.8rem 1.8rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-family: var(--font-nav);
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .subpage-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 9rem 5% 6rem 5%;
+        }
+        .subpage-header { text-align: center; max-width: 800px; margin: 0 auto 4rem auto; }
+        .subpage-badge {
+            display: inline-block;
+            background: var(--pink-accent);
+            color: var(--pink-accent-dark);
+            font-family: var(--font-nav);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.35rem 1rem;
+            border-radius: 100px;
+            margin-bottom: 1rem;
+        }
+        .subpage-title {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            line-height: 1;
+            margin-bottom: 1.2rem;
+            font-weight: 400;
+        }
+        .subpage-desc { font-size: 1.15rem; color: var(--muted-color); line-height: 1.7; }
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: rgba(251, 207, 232, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        .glass-card h3 { font-size: 1.35rem; font-weight: 700; }
+        .glass-card p { font-size: 0.95rem; color: var(--muted-color); line-height: 1.6; }
+        .nutrition-wrapper {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nutrition-panel {
+            flex: 1;
+            min-width: 320px;
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+        .nutrition-title {
+            font-family: var(--font-nav);
+            font-size: 1.8rem;
+            font-weight: 900;
+            border-bottom: 8px solid white;
+            padding-bottom: 0.5rem;
+        }
+        .nutrition-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            font-size: 0.95rem;
+        }
+        .nutrition-row.bold { font-weight: 800; border-bottom-width: 3px; }
+        .clean-pledge-list { flex: 1.2; min-width: 320px; display: flex; flex-direction: column; gap: 1.5rem; }
+        .pledge-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .pledge-check { color: #10b981; font-size: 1.4rem; font-weight: 900; }
+        @media(max-width: 768px) {
+            .nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                <path d="M12 8V16M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span>raywolf desgins</span>
+        </a>
+        <nav class="nav">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="ingredients.html" class="nav-item active">Ingredients</a>
+            <a href="taste.html" class="nav-item">Taste</a>
+            <a href="eco.html" class="nav-item">Eco</a>
+            <a href="reviews.html" class="nav-item">Reviews</a>
+        </nav>
+        <a href="index.html#shop" class="contact-btn">Shop Now</a>
+    </header>
+
+    <div class="subpage-container">
+        <div class="subpage-header">
+            <span class="subpage-badge">Clean Label Transparency</span>
+            <h1 class="subpage-title">Pure Nature, Zero Compromise</h1>
+            <p class="subpage-desc">Every batch of raywolf desgins soda is formulated with organic botanical essences, crisp sparkling spring water, and plant-derived sweetness. Nothing artificial, ever.</p>
+        </div>
+
+        <div class="grid-cards">
+            <div class="glass-card">
+                <div class="card-icon">💧</div>
+                <h3>Sparkling Artesian Spring Water</h3>
+                <p>Sourced from high-altitude volcanic aquifers, quadruple-filtered to ensure neutral pH and razor-sharp effervescence without mineral heaviness.</p>
+            </div>
+            <div class="glass-card">
+                <div class="card-icon">🍋</div>
+                <h3>Cold-Pressed Botanical Essences</h3>
+                <p>We extract aromatic oils directly from sun-ripened key limes, bergamot, and wild forest berries. True fruit taste without artificial flavoring.</p>
+            </div>
+            <div class="glass-card">
+                <div class="card-icon">🌿</div>
+                <h3>Organic Stevia Reb-M (98% Purity)</h3>
+                <p>Next-generation Reb-M extracted from non-GMO stevia leaves. Delivers rich, natural sweetness with zero metallic aftertaste and 0 glycemic impact.</p>
+            </div>
+            <div class="glass-card">
+                <div class="card-icon">🍏</div>
+                <h3>Natural Malic & Citric Infusion</h3>
+                <p>Derived from crisp green apples and lemons, providing the unmistakable palate-cleansing snap and dynamic fruit acidity.</p>
+            </div>
+        </div>
+
+        <div class="nutrition-wrapper">
+            <div class="nutrition-panel">
+                <div class="nutrition-title">Nutrition Facts</div>
+                <div style="font-size: 0.85rem; color: var(--muted-color); padding: 0.3rem 0;">1 Serving Per Can | Serving Size: 12 fl oz (355ml)</div>
+                <div class="nutrition-row bold" style="font-size: 1.2rem;">
+                    <span>Calories</span>
+                    <span>0</span>
+                </div>
+                <div class="nutrition-row">
+                    <span>Total Fat 0g</span>
+                    <span>0%</span>
+                </div>
+                <div class="nutrition-row">
+                    <span>Sodium 15mg</span>
+                    <span>1%</span>
+                </div>
+                <div class="nutrition-row bold">
+                    <span>Total Carbohydrate 0g</span>
+                    <span>0%</span>
+                </div>
+                <div class="nutrition-row" style="padding-left: 1rem;">
+                    <span>Total Sugars 0g</span>
+                    <span>0%</span>
+                </div>
+                <div class="nutrition-row" style="padding-left: 1.5rem; color: #34d399;">
+                    <span>Includes 0g Added Sugars</span>
+                    <span>0%</span>
+                </div>
+                <div class="nutrition-row bold">
+                    <span>Protein 0g</span>
+                    <span>0%</span>
+                </div>
+                <div class="nutrition-row">
+                    <span>Vitamin C 90mg</span>
+                    <span>100%</span>
+                </div>
+            </div>
+
+            <div class="clean-pledge-list">
+                <h3 style="font-family: var(--font-nav); font-size: 1.5rem; font-weight: 800;">The Raywolf Clean Pledge</h3>
+                <div class="pledge-item">
+                    <span class="pledge-check">✓</span>
+                    <div>
+                        <strong>0% Aspartame or Sucralose</strong>
+                        <p style="font-size: 0.85rem; color: var(--muted-color); margin-top: 0.2rem;">We never use synthetic chemicals that trick your metabolism or damage gut microbiome health.</p>
+                    </div>
+                </div>
+                <div class="pledge-item">
+                    <span class="pledge-check">✓</span>
+                    <div>
+                        <strong>0% High Fructose Corn Syrup</strong>
+                        <p style="font-size: 0.85rem; color: var(--muted-color); margin-top: 0.2rem;">Pure botanical sweetness that keeps insulin spikes at zero.</p>
+                    </div>
+                </div>
+                <div class="pledge-item">
+                    <span class="pledge-check">✓</span>
+                    <div>
+                        <strong>Non-GMO Project Verified & 100% Vegan</strong>
+                        <p style="font-size: 0.85rem; color: var(--muted-color); margin-top: 0.2rem;">Every ingredient is sustainably harvested and certified cruelty-free.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

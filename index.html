@@ -1,0 +1,2870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>raywolf desgins | Pure Zero Refreshment</title>
+    <meta name="description" content="Experience the crisp, clean taste of Diet Soda by raywolf desgins. Zero sugar, zero compromise.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Galada&display=swap" rel="stylesheet">
+    
+    <!-- CDN Libraries: GSAP, Confetti, Google model-viewer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #ffffff;
+            --accent-color: #ffffff;
+            --muted-color: rgba(255, 255, 255, 0.7);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --pink-accent: #fbcfe8;
+            --pink-accent-dark: #011d17;
+            --font-main: 'Inter', sans-serif;
+            --font-heading: 'Galada', cursive;
+            --font-nav: 'Manrope', sans-serif;
+
+            /* Dynamic Background Variables */
+            --bg-inner: #0b8a78;
+            --bg-mid: #044e3b;
+            --bg-outer: #011411;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at center, var(--bg-inner) 0%, var(--bg-mid) 50%, var(--bg-outer) 100%);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            transition: background 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        body.blue-theme {
+            --bg-inner: #0b4f8a;
+            --bg-mid: #04294e;
+            --bg-outer: #010c14;
+        }
+
+        /* 1. Bubbles Container */
+        #bubbles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bubble-img {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        @keyframes floatUpImg {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.4; }
+            90% { opacity: 0.4; }
+            100% {
+                transform: translateY(-110vh) translateX(30px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* 2. Glassmorphism Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.8rem 4%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 200;
+            pointer-events: auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 700;
+            font-size: 1.3rem;
+            font-family: var(--font-heading);
+            color: #ffffff;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.03);
+        }
+
+        .logo svg {
+            color: #ffffff;
+        }
+
+        .nav {
+            display: flex;
+            gap: 0.4rem;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0.35rem 0.5rem;
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .nav-item {
+            font-family: var(--font-nav);
+            color: var(--muted-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.5rem 1.15rem;
+            border-radius: 100px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: var(--pink-accent);
+            color: var(--pink-accent-dark);
+            transform: translateY(-1px);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cart-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.65rem 1.2rem;
+            border-radius: 100px;
+            font-family: var(--font-nav);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .cart-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .cart-badge {
+            background: var(--pink-accent);
+            color: var(--pink-accent-dark);
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 50px;
+        }
+
+        .contact-btn {
+            background: rgba(0, 0, 0, 0.55);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.8rem 1.8rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-family: var(--font-nav);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Views Container System */
+        .views-wrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .page-view {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: scale(0.98);
+            z-index: 10;
+        }
+
+        .page-view.active-view {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: scale(1);
+            z-index: 20;
+        }
+
+        /* 3. Hero View (Home) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 4%;
+            padding-top: 5rem;
+        }
+
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            height: 100%;
+            position: relative;
+        }
+
+        /* Typography */
+        .main-title,
+        .side-title {
+            font-family: var(--font-heading);
+            font-size: clamp(5rem, 9.5vw, 11rem);
+            line-height: 0.82;
+            font-weight: 400;
+            text-transform: none;
+            white-space: nowrap;
+            color: white;
+            letter-spacing: normal;
+        }
+
+        .outline {
+            color: var(--text-color);
+        }
+
+        /* 3a. Leaves Container */
+        .leaves-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            transition: transform 0.1s ease-out;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            pointer-events: none;
+            z-index: -1;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+        }
+
+        .l1 { top: 10%; left: 15%; }
+        .l2 { top: 40%; left: 80%; width: 140px; height: 140px; opacity: 0.4; }
+        .l3 { top: 70%; left: 75%; width: 80px; height: 80px; }
+        .l4 { top: 85%; left: 20%; width: 120px; height: 120px; opacity: 0.3; }
+
+        /* 3b. Left Column */
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 6rem 0;
+            gap: 2rem;
+            z-index: 100;
+            pointer-events: auto;
+        }
+
+        .description {
+            color: var(--muted-color);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 400px;
+        }
+
+        .cta-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .primary-btn {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.4rem 0.4rem 0.4rem 1.5rem;
+            border-radius: 100px;
+            font-weight: 700;
+            font-family: var(--font-nav);
+            font-size: 0.95rem;
+            cursor: pointer;
+            width: fit-content;
+            transition: all 0.3s ease;
+        }
+
+        .primary-btn:hover {
+            background: rgba(0, 0, 0, 0.75);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .plus-icon {
+            background: var(--pink-accent);
+            color: var(--pink-accent-dark);
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            font-weight: 900;
+            line-height: 1;
+            padding-bottom: 2px;
+            border: none;
+            transition: transform 0.3s ease;
+        }
+
+        .primary-btn:hover .plus-icon {
+            transform: rotate(90deg);
+        }
+
+        .award-badge {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .award-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .award-text { display: flex; flex-direction: column; }
+        .award-title { font-size: 0.7rem; letter-spacing: 0.1em; color: var(--muted-color); font-weight: 700; }
+        .award-subtitle { font-size: 0.85rem; font-weight: 600; }
+
+        /* 3c & 3e. Berries Containers */
+        .berries-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 110;
+            transition: transform 0.1s ease-out;
+        }
+
+        .berries-container-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            transition: transform 0.1s ease-out;
+        }
+
+        .berry {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            outline: none;
+            --progress-bar-color: transparent;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .b1 { top: 25%; left: 30%; width: 220px; height: 220px; }
+        .b2 { top: 60%; left: 42%; width: 100px; height: 100px; }
+        .b3 { top: 30%; left: 62%; width: 250px; height: 250px; }
+        .b4 { top: 15%; left: 48%; width: 140px; height: 140px; }
+        .b5 { top: 75%; left: 20%; width: 120px; height: 120px; }
+        .b6 { top: 45%; left: 75%; width: 180px; height: 180px; }
+        .b7 { top: 15%; left: 40%; width: 80px; height: 80px; opacity: 0.7; }
+        .b8 { top: 50%; left: 55%; width: 70px; height: 70px; opacity: 0.6; }
+        .b9 { top: 80%; left: 35%; width: 75px; height: 75px; opacity: 0.7; }
+
+        /* 3d. Center Product (The 3D Can) */
+        .hero-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out 0.3s forwards, float 6s ease-in-out infinite;
+            pointer-events: none;
+            background: radial-gradient(circle at center, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+        }
+
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .main-product-3d {
+            width: 80vw;
+            height: 80vh;
+            outline: none;
+            --progress-bar-color: transparent;
+            --poster-color: transparent;
+            z-index: 1;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(25deg);
+            pointer-events: none;
+        }
+
+        .main-product-3d[camera-controls] { pointer-events: auto; }
+
+        /* 3f. Right Column */
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+            text-align: right;
+            height: 100%;
+            padding: 6rem 0;
+            z-index: 100;
+            width: 450px;
+            pointer-events: none;
+        }
+
+        .product-carousel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: flex-end;
+            pointer-events: auto;
+        }
+
+        .carousel-cards { display: flex; gap: 1rem; }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 1rem;
+            padding-top: 5rem;
+            border-radius: 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 135px;
+            position: relative;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .card.active {
+            border-color: var(--pink-accent);
+            border-width: 1px;
+            background: var(--glass-bg);
+            box-shadow: 0 0 25px rgba(251, 207, 232, 0.2);
+        }
+
+        .card img {
+            width: 140px;
+            height: auto;
+            margin-top: -8rem;
+            filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.5));
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+            display: block;
+            will-change: transform;
+            pointer-events: none;
+        }
+
+        .card:hover img {
+            transform: translateY(-30px) rotate(-12deg) scale(1.15) !important;
+        }
+
+        .card-info {
+            display: flex;
+            flex-direction: column;
+            font-size: 0.75rem;
+            width: 100%;
+            word-wrap: break-word;
+        }
+
+        .card-info span:first-child { font-weight: 700; }
+        .card-info span:last-child { color: var(--muted-color); font-weight: 500; }
+
+        .carousel-nav { display: flex; gap: 1rem; }
+
+        .nav-arrow {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: white;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-arrow:hover { 
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .side-title { align-self: flex-end; text-align: right; }
+
+        /* Scrollable Full Page Subviews */
+        .subpage-container {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 7rem 6% 5rem 6%;
+            scroll-behavior: smooth;
+        }
+
+        .subpage-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .subpage-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .subpage-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .subpage-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3.5rem auto;
+        }
+
+        .subpage-badge {
+            display: inline-block;
+            background: var(--pink-accent);
+            color: var(--pink-accent-dark);
+            font-family: var(--font-nav);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.35rem 1rem;
+            border-radius: 100px;
+            margin-bottom: 1rem;
+        }
+
+        .subpage-title {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            line-height: 1;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .subpage-desc {
+            font-size: 1.15rem;
+            color: var(--muted-color);
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        /* Glass Cards Grid */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.09);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: rgba(251, 207, 232, 0.15);
+            border: 1px solid rgba(251, 207, 232, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .glass-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .glass-card p {
+            font-size: 0.95rem;
+            color: var(--muted-color);
+            line-height: 1.6;
+        }
+
+        /* Ingredients: Nutrition Label Card */
+        .nutrition-wrapper {
+            display: flex;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 3rem auto 0 auto;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nutrition-panel {
+            flex: 1;
+            min-width: 320px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .nutrition-title {
+            font-family: var(--font-nav);
+            font-size: 1.8rem;
+            font-weight: 900;
+            border-bottom: 8px solid white;
+            padding-bottom: 0.5rem;
+        }
+
+        .nutrition-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            font-size: 0.95rem;
+        }
+
+        .nutrition-row.bold {
+            font-weight: 800;
+            border-bottom-width: 3px;
+        }
+
+        .clean-pledge-list {
+            flex: 1.2;
+            min-width: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .pledge-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .pledge-check {
+            color: #10b981;
+            font-size: 1.4rem;
+            line-height: 1;
+            font-weight: 900;
+        }
+
+        /* Taste View Profiler */
+        .flavor-profiler {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .flavor-switch-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .flavor-tab-btn {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 100px;
+            font-family: var(--font-nav);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .flavor-tab-btn.active {
+            background: var(--pink-accent);
+            color: var(--pink-accent-dark);
+            border-color: var(--pink-accent);
+            box-shadow: 0 0 25px rgba(251, 207, 232, 0.3);
+        }
+
+        .sensory-bars-container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 2.5rem 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+
+        .bar-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .bar-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .bar-track {
+            height: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981, var(--pink-accent));
+            border-radius: 100px;
+            width: 0%;
+            transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .bar-fill.blue-fill {
+            background: linear-gradient(90deg, #38bdf8, var(--pink-accent));
+        }
+
+        .tasting-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .tasting-step {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .tasting-step-tag {
+            font-family: var(--font-nav);
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--pink-accent);
+            text-transform: uppercase;
+        }
+
+        /* Eco View Timeline */
+        .eco-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto 3.5rem auto;
+        }
+
+        .eco-metric-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 2rem 1.5rem;
+            border-radius: 24px;
+            text-align: center;
+        }
+
+        .eco-metric-num {
+            font-family: var(--font-nav);
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #34d399;
+            line-height: 1.1;
+        }
+
+        .eco-metric-label {
+            font-size: 0.9rem;
+            color: var(--muted-color);
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .timeline-step {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.8rem 2.2rem;
+            border-radius: 24px;
+            backdrop-filter: blur(15px);
+        }
+
+        .timeline-num {
+            width: 50px;
+            height: 50px;
+            background: var(--pink-accent);
+            color: var(--pink-accent-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        /* Reviews View */
+        .reviews-header-block {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto 2.5rem auto;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .reviews-rating-aggregate {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .big-rating {
+            font-family: var(--font-nav);
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .stars-gold {
+            color: #fbbf24;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+        }
+
+        .add-review-btn {
+            background: var(--pink-accent);
+            color: var(--pink-accent-dark);
+            border: none;
+            padding: 0.85rem 1.8rem;
+            border-radius: 100px;
+            font-family: var(--font-nav);
+            font-weight: 800;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .add-review-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(251, 207, 232, 0.3);
+        }
+
+        .reviews-filter-tabs {
+            display: flex;
+            gap: 0.8rem;
+            max-width: 1100px;
+            margin: 0 auto 2.5rem auto;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .filter-tab.active {
+            background: white;
+            color: #011d17;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            backdrop-filter: blur(15px);
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .reviewer-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #0b4f8a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .reviewer-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .verified-badge {
+            color: #34d399;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .review-flavor-tag {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--muted-color);
+            width: fit-content;
+        }
+
+        .review-text {
+            font-size: 0.95rem;
+            color: var(--muted-color);
+            line-height: 1.6;
+        }
+
+        .helpful-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--muted-color);
+            padding: 0.35rem 0.8rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            align-self: flex-start;
+            margin-top: auto;
+            transition: all 0.2s ease;
+        }
+
+        .helpful-btn:hover {
+            border-color: white;
+            color: white;
+        }
+
+        /* 4. Slide-Out Cart / Shop Drawer */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            z-index: 500;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .cart-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: min(500px, 100vw);
+            height: 100vh;
+            background: rgba(10, 16, 18, 0.95);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(35px);
+            -webkit-backdrop-filter: blur(35px);
+            z-index: 600;
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 2.5rem 2rem;
+            box-shadow: -20px 0 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .cart-drawer.open {
+            transform: translateX(0);
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            padding-bottom: 1.5rem;
+        }
+
+        .drawer-header h2 {
+            font-family: var(--font-nav);
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+
+        .close-drawer-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+        }
+
+        .close-drawer-btn:hover { background: rgba(255, 255, 255, 0.2); }
+
+        .drawer-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .cart-item-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            padding: 1.2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .cart-item-img {
+            width: 60px;
+            height: 80px;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
+        }
+
+        .cart-item-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .cart-item-title {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .cart-item-pack {
+            font-size: 0.8rem;
+            color: var(--muted-color);
+        }
+
+        .cart-item-price {
+            font-weight: 800;
+            color: var(--pink-accent);
+            font-size: 1.05rem;
+        }
+
+        .cart-qty-ctrl {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 0.2rem 0.5rem;
+        }
+
+        .qty-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pack-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.6rem;
+            margin-top: 0.5rem;
+        }
+
+        .pack-option-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: white;
+            border-radius: 12px;
+            padding: 0.6rem 0.4rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .pack-option-btn.selected {
+            background: var(--pink-accent);
+            color: var(--pink-accent-dark);
+            border-color: var(--pink-accent);
+        }
+
+        .promo-block {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .promo-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 0.7rem 1rem;
+            color: white;
+            font-family: var(--font-main);
+            outline: none;
+        }
+
+        .promo-apply-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            padding: 0 1.2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background 0.2s ease;
+        }
+
+        .promo-apply-btn:hover { background: rgba(255, 255, 255, 0.25); }
+
+        .drawer-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            padding-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            color: var(--muted-color);
+        }
+
+        .summary-row.total-row {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: white;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 0.6rem;
+        }
+
+        .checkout-submit-btn {
+            background: var(--pink-accent);
+            color: var(--pink-accent-dark);
+            border: none;
+            padding: 1.1rem;
+            border-radius: 100px;
+            font-family: var(--font-nav);
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(251, 207, 232, 0.3);
+        }
+
+        .checkout-submit-btn:hover {
+            transform: translateY(-2px);
+            background: #fce7f3;
+            box-shadow: 0 15px 35px rgba(251, 207, 232, 0.4);
+        }
+
+        /* 5. Modals (Contact, Checkout, Review) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.35s ease;
+            padding: 1.5rem;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: rgba(18, 26, 28, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 28px;
+            width: min(550px, 100%);
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            transform: scale(0.95);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-overlay.open .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-title {
+            font-family: var(--font-nav);
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            font-size: 0.95rem;
+            color: var(--muted-color);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .form-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--muted-color);
+        }
+
+        .form-input, .form-textarea, .form-select {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 0.85rem 1.1rem;
+            color: white;
+            font-family: var(--font-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            border-color: var(--pink-accent);
+        }
+
+        .form-textarea { resize: vertical; min-height: 100px; }
+        .form-select option { background: #111; color: white; }
+
+        .star-picker {
+            display: flex;
+            gap: 0.5rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .star-picker span.active {
+            color: #fbbf24;
+        }
+
+        .modal-submit-btn {
+            width: 100%;
+            background: var(--pink-accent);
+            color: var(--pink-accent-dark);
+            border: none;
+            padding: 1rem;
+            border-radius: 100px;
+            font-family: var(--font-nav);
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .modal-submit-btn:hover {
+            background: #fce7f3;
+            transform: translateY(-2px);
+        }
+
+        .success-box {
+            display: none;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .success-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #34d399;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1200px) {
+            .main-product-3d { width: 100vw; height: 60vh; top: 40%; }
+            .hero-content { flex-direction: column; padding-top: 6rem; }
+            .hero-center { order: -1; }
+            .main-title, .side-title { font-size: 4.5rem; }
+            .hero-right { align-items: center; text-align: center; width: 100%; }
+            .side-title { align-self: center; text-align: center; }
+            .hero-left { padding: 2rem 0; align-items: center; text-align: center; }
+            .cta-group { justify-content: center; }
+            .award-badge { margin: 1rem auto; }
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 1rem 4%; }
+            .nav { display: none; } /* Mobile drawer or scrollable nav */
+            .main-title, .side-title { font-size: 3.5rem; }
+            .cart-drawer { width: 100vw; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Bubbles Container -->
+    <div id="bubbles-container"></div>
+
+    <!-- 2. Glassmorphism Header -->
+    <header class="header">
+        <a href="#home" class="logo" id="brand-logo" title="raywolf desgins">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                <path d="M12 8V16M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span>raywolf desgins</span>
+        </a>
+        <nav class="nav glass">
+            <a href="#home" class="nav-item active" data-view="view-home">Home</a>
+            <a href="#ingredients" class="nav-item" data-view="view-ingredients">Ingredients</a>
+            <a href="#taste" class="nav-item" data-view="view-taste">Taste</a>
+            <a href="#eco" class="nav-item" data-view="view-eco">Eco</a>
+            <a href="#reviews" class="nav-item" data-view="view-reviews">Reviews</a>
+        </nav>
+        <div class="header-actions">
+            <button class="cart-btn" id="open-cart-btn" title="View Cart">
+                <span>🛒 Cart</span>
+                <span class="cart-badge" id="cart-count">1</span>
+            </button>
+            <button class="contact-btn" id="open-contact-btn">Contact Us</button>
+        </div>
+    </header>
+
+    <!-- Views Wrapper -->
+    <div class="views-wrapper">
+
+        <!-- ================= PAGE 1: HOME (Hero 3D) ================= -->
+        <main class="page-view active-view" id="view-home">
+            <div class="hero">
+                <div class="hero-content">
+
+                    <!-- Floating leaves (background) -->
+                    <div class="leaves-container">
+                        <model-viewer class="leaf l1" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/leaves.glb" environment-image="neutral" exposure="1.0" interaction-prompt="none" camera-orbit="45deg 75deg 105%"></model-viewer>
+                        <model-viewer class="leaf l2" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/leaves.glb" environment-image="neutral" exposure="1.0" interaction-prompt="none" camera-orbit="-30deg 60deg 105%"></model-viewer>
+                        <model-viewer class="leaf l3" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/leaves.glb" environment-image="neutral" exposure="1.0" interaction-prompt="none" camera-orbit="120deg 85deg 105%"></model-viewer>
+                        <model-viewer class="leaf l4" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/leaves.glb" environment-image="neutral" exposure="1.0" interaction-prompt="none" camera-orbit="10deg 45deg 105%"></model-viewer>
+                    </div>
+
+                    <!-- Left Column -->
+                    <div class="hero-left">
+                        <h1 class="main-title large-animation-1">
+                            <span class="outline">Pure</span><br>
+                            Zero
+                        </h1>
+                        <p class="description">
+                            Unleash the crisp taste of zero sugar. <br>
+                            Refreshment redefined in every bubble — <br>
+                            crafted by <strong>raywolf desgins</strong>.
+                        </p>
+                        <div class="cta-group">
+                            <button class="primary-btn" id="hero-shop-btn">
+                                Shop Now
+                                <span class="plus-icon">+</span>
+                            </button>
+                        </div>
+                        <div class="award-badge">
+                            <div class="award-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 15L15 18L19 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="award-text">
+                                <span class="award-title">DESIGN AWARDS</span>
+                                <span class="award-subtitle">PREMIUM BEVERAGE 2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Background berries (behind the can) -->
+                    <div class="berries-container-bg">
+                        <model-viewer class="berry b7" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/cherry.glb" environment-image="neutral" exposure="1.0" interaction-prompt="none" camera-orbit="-20deg 110deg 105%"></model-viewer>
+                        <model-viewer class="berry b8" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/cherry.glb" environment-image="neutral" exposure="1.0" interaction-prompt="none" camera-orbit="160deg 45deg 105%"></model-viewer>
+                        <model-viewer class="berry b9" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/cherry.glb" environment-image="neutral" exposure="1.0" interaction-prompt="none" camera-orbit="45deg 20deg 105%"></model-viewer>
+                    </div>
+
+                    <!-- Center Product (The 3D Can) -->
+                    <div class="hero-center">
+                        <model-viewer id="product-model" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/deit_soda2.glb" alt="Diet Soda 3D Model" camera-controls
+                            disable-zoom shadow-intensity="0" environment-image="neutral" exposure="1.5"
+                            interaction-prompt="none" camera-orbit="0deg 90deg 380%" field-of-view="30deg"
+                            class="main-product-3d">
+                        </model-viewer>
+                    </div>
+
+                    <!-- Foreground berries (above text and can) -->
+                    <div class="berries-container">
+                        <model-viewer class="berry b1" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/cherry.glb" environment-image="neutral" exposure="1.2" interaction-prompt="none" camera-orbit="45deg 120deg 105%"></model-viewer>
+                        <model-viewer class="berry b2" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/cherry.glb" environment-image="neutral" exposure="1.2" interaction-prompt="none" camera-orbit="-120deg 45deg 105%"></model-viewer>
+                        <model-viewer class="berry b3" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/cherry.glb" environment-image="neutral" exposure="1.2" interaction-prompt="none" camera-orbit="200deg 90deg 105%"></model-viewer>
+                        <model-viewer class="berry b4" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/cherry.glb" environment-image="neutral" exposure="1.2" interaction-prompt="none" camera-orbit="10deg 20deg 105%"></model-viewer>
+                        <model-viewer class="berry b5" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/cherry.glb" environment-image="neutral" exposure="1.2" interaction-prompt="none" camera-orbit="-45deg 160deg 105%"></model-viewer>
+                        <model-viewer class="berry b6" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/cherry.glb" environment-image="neutral" exposure="1.2" interaction-prompt="none" camera-orbit="80deg 75deg 105%"></model-viewer>
+                    </div>
+
+                    <!-- Right Column (Flavor Carousel + Side Title) -->
+                    <div class="hero-right">
+                        <div class="product-carousel">
+                            <div class="carousel-cards">
+                                <div class="card active" data-flavor="classic">
+                                    <img src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/Green%20Soda.png" alt="Diet Classic">
+                                    <div class="card-info">
+                                        <span>Diet Classic</span>
+                                        <span>$2.99</span>
+                                    </div>
+                                </div>
+                                <div class="card" data-flavor="blue">
+                                    <img src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/Blue%20Soda.png" alt="Zero Lime" style="filter: brightness(0.7);">
+                                    <div class="card-info">
+                                        <span>Zero Lime</span>
+                                        <span>$2.99</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-nav">
+                                <button class="nav-arrow" id="prev-flavor" title="Previous Flavor">←</button>
+                                <button class="nav-arrow" id="next-flavor" title="Next Flavor">→</button>
+                            </div>
+                        </div>
+                        <h2 class="side-title large-animation-1">
+                            <span class="outline">Refreshingly</span><br>
+                            Clean
+                        </h2>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <!-- ================= PAGE 2: INGREDIENTS ================= -->
+        <section class="page-view" id="view-ingredients">
+            <div class="subpage-container">
+                <div class="subpage-header">
+                    <span class="subpage-badge">Clean Label Transparency</span>
+                    <h2 class="subpage-title">Pure Nature, Zero Compromise</h2>
+                    <p class="subpage-desc">Every batch of raywolf desgins soda is formulated with organic botanical essences, crisp sparkling spring water, and plant-derived sweetness. Nothing artificial, ever.</p>
+                </div>
+
+                <div class="grid-cards">
+                    <div class="glass-card">
+                        <div class="card-icon">💧</div>
+                        <h3>Sparkling Artesian Spring Water</h3>
+                        <p>Sourced from high-altitude volcanic aquifers, quadruple-filtered to ensure neutral pH and razor-sharp effervescence without mineral heaviness.</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="card-icon">🍋</div>
+                        <h3>Cold-Pressed Botanical Essences</h3>
+                        <p>We extract aromatic oils directly from sun-ripened key limes, bergamot, and wild forest berries. True fruit taste without artificial flavoring.</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="card-icon">🌿</div>
+                        <h3>Organic Stevia Reb-M (98% Purity)</h3>
+                        <p>Next-generation Reb-M extracted from non-GMO stevia leaves. Delivers rich, natural sweetness with zero metallic aftertaste and 0 glycemic impact.</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="card-icon">🍏</div>
+                        <h3>Natural Malic & Citric Infusion</h3>
+                        <p>Derived from crisp green apples and lemons, providing the unmistakable palate-cleansing snap and dynamic fruit acidity.</p>
+                    </div>
+                </div>
+
+                <!-- Nutrition Panel & Pledge -->
+                <div class="nutrition-wrapper">
+                    <div class="nutrition-panel">
+                        <div class="nutrition-title">Nutrition Facts</div>
+                        <div style="font-size: 0.85rem; color: var(--muted-color); padding: 0.3rem 0;">1 Serving Per Can | Serving Size: 12 fl oz (355ml)</div>
+                        <div class="nutrition-row bold" style="font-size: 1.2rem;">
+                            <span>Calories</span>
+                            <span>0</span>
+                        </div>
+                        <div class="nutrition-row">
+                            <span>Total Fat 0g</span>
+                            <span>0%</span>
+                        </div>
+                        <div class="nutrition-row">
+                            <span>Sodium 15mg</span>
+                            <span>1%</span>
+                        </div>
+                        <div class="nutrition-row bold">
+                            <span>Total Carbohydrate 0g</span>
+                            <span>0%</span>
+                        </div>
+                        <div class="nutrition-row" style="padding-left: 1rem;">
+                            <span>Total Sugars 0g</span>
+                            <span>0%</span>
+                        </div>
+                        <div class="nutrition-row" style="padding-left: 1.5rem; color: #34d399;">
+                            <span>Includes 0g Added Sugars</span>
+                            <span>0%</span>
+                        </div>
+                        <div class="nutrition-row bold">
+                            <span>Protein 0g</span>
+                            <span>0%</span>
+                        </div>
+                        <div class="nutrition-row">
+                            <span>Vitamin C 90mg</span>
+                            <span>100%</span>
+                        </div>
+                    </div>
+
+                    <div class="clean-pledge-list">
+                        <h3 style="font-family: var(--font-nav); font-size: 1.5rem; font-weight: 800;">The Raywolf Clean Pledge</h3>
+                        <div class="pledge-item">
+                            <span class="pledge-check">✓</span>
+                            <div>
+                                <strong>0% Aspartame or Sucralose</strong>
+                                <p style="font-size: 0.85rem; color: var(--muted-color); margin-top: 0.2rem;">We never use synthetic chemicals that trick your metabolism or damage gut microbiome health.</p>
+                            </div>
+                        </div>
+                        <div class="pledge-item">
+                            <span class="pledge-check">✓</span>
+                            <div>
+                                <strong>0% High Fructose Corn Syrup</strong>
+                                <p style="font-size: 0.85rem; color: var(--muted-color); margin-top: 0.2rem;">Pure botanical sweetness that keeps insulin spikes at zero.</p>
+                            </div>
+                        </div>
+                        <div class="pledge-item">
+                            <span class="pledge-check">✓</span>
+                            <div>
+                                <strong>Non-GMO Project Verified & 100% Vegan</strong>
+                                <p style="font-size: 0.85rem; color: var(--muted-color); margin-top: 0.2rem;">Every ingredient is sustainably harvested and certified cruelty-free.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 3: TASTE ================= -->
+        <section class="page-view" id="view-taste">
+            <div class="subpage-container">
+                <div class="subpage-header">
+                    <span class="subpage-badge">Sensory Profile</span>
+                    <h2 class="subpage-title">Symphony of Senses</h2>
+                    <p class="subpage-desc">Engineered for maximal refreshment. Explore the flavor dynamics and sensory fingerprint of our signature recipes.</p>
+                </div>
+
+                <div class="flavor-profiler">
+                    <div class="flavor-switch-buttons">
+                        <button class="flavor-tab-btn active" id="taste-tab-classic">Diet Classic (Teal)</button>
+                        <button class="flavor-tab-btn" id="taste-tab-blue">Zero Lime (Electric Blue)</button>
+                    </div>
+
+                    <div class="sensory-bars-container">
+                        <div class="bar-group">
+                            <div class="bar-header">
+                                <span id="metric-label-1">Crispness & Effervescence</span>
+                                <span id="metric-val-1">98%</span>
+                            </div>
+                            <div class="bar-track"><div class="bar-fill" id="bar-1" style="width: 98%;"></div></div>
+                        </div>
+
+                        <div class="bar-group">
+                            <div class="bar-header">
+                                <span id="metric-label-2">Citrus Zest & Zing</span>
+                                <span id="metric-val-2">92%</span>
+                            </div>
+                            <div class="bar-track"><div class="bar-fill" id="bar-2" style="width: 92%;"></div></div>
+                        </div>
+
+                        <div class="bar-group">
+                            <div class="bar-header">
+                                <span id="metric-label-3">Berry Botanical Notes</span>
+                                <span id="metric-val-3">78%</span>
+                            </div>
+                            <div class="bar-track"><div class="bar-fill" id="bar-3" style="width: 78%;"></div></div>
+                        </div>
+
+                        <div class="bar-group">
+                            <div class="bar-header">
+                                <span id="metric-label-4">Clean Palate Finish (No Film)</span>
+                                <span id="metric-val-4">99%</span>
+                            </div>
+                            <div class="bar-track"><div class="bar-fill" id="bar-4" style="width: 99%;"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="tasting-steps">
+                        <div class="tasting-step">
+                            <span class="tasting-step-tag">Phase 1: Entry</span>
+                            <h3>The Micro-Bubble Snap</h3>
+                            <p style="color: var(--muted-color); font-size: 0.95rem; line-height: 1.6;">Fine pin-point carbonation bursts over the tip of the tongue, delivering an instantaneous wave of aromatic lime peel oils.</p>
+                        </div>
+                        <div class="tasting-step">
+                            <span class="tasting-step-tag">Phase 2: Mid-Palate</span>
+                            <h3>Smooth Botanical Body</h3>
+                            <p style="color: var(--muted-color); font-size: 0.95rem; line-height: 1.6;">Stevia Reb-M and botanical essence unfurl in harmony, providing rich sweetness without heavy or sticky syrups.</p>
+                        </div>
+                        <div class="tasting-step">
+                            <span class="tasting-step-tag">Phase 3: Finish</span>
+                            <h3>Dry Palate Cleanser</h3>
+                            <p style="color: var(--muted-color); font-size: 0.95rem; line-height: 1.6;">Natural malic acid cleanly resets your palate in seconds, leaving your mouth refreshed, cool, and craving the next sip.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 4: ECO ================= -->
+        <section class="page-view" id="view-eco">
+            <div class="subpage-container">
+                <div class="subpage-header">
+                    <span class="subpage-badge">Earth-First Refreshment</span>
+                    <h2 class="subpage-title">Circularity Without End</h2>
+                    <p class="subpage-desc">Every raywolf desgins can is infinitely recyclable. We never use single-use plastic rings, wrap, or liners. Our cold-chain bottling runs 100% on renewable solar energy.</p>
+                </div>
+
+                <div class="eco-metrics">
+                    <div class="eco-metric-card">
+                        <div class="eco-metric-num">1.4M+</div>
+                        <div class="eco-metric-label">Plastic Bottles Diverted</div>
+                    </div>
+                    <div class="eco-metric-card">
+                        <div class="eco-metric-num">100%</div>
+                        <div class="eco-metric-label">Infinitely Recyclable Aluminum</div>
+                    </div>
+                    <div class="eco-metric-card">
+                        <div class="eco-metric-num">95%</div>
+                        <div class="eco-metric-label">Energy Saved vs Virgin Bauxite</div>
+                    </div>
+                    <div class="eco-metric-card">
+                        <div class="eco-metric-num">0%</div>
+                        <div class="eco-metric-label">Single-Use Plastics in Packaging</div>
+                    </div>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="timeline-step">
+                        <div class="timeline-num">1</div>
+                        <div>
+                            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.4rem;">The Infinitely Recyclable Aluminum Vessel</h3>
+                            <p style="color: var(--muted-color); font-size: 0.95rem; line-height: 1.6;">Aluminum is the undisputed champion of the circular economy. Over 75% of all aluminum ever created in human history is still in productive use today.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-num">2</div>
+                        <div>
+                            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.4rem;">Smart Curbside Collection</h3>
+                            <p style="color: var(--muted-color); font-size: 0.95rem; line-height: 1.6;">Once enjoyed, simply place the can into standard municipal recycling. No sorting, peeling, or plastic caps to discard.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-num">3</div>
+                        <div>
+                            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.4rem;">Clean Induction Smelting</h3>
+                            <p style="color: var(--muted-color); font-size: 0.95rem; line-height: 1.6;">Shredded and melted in high-efficiency induction furnaces using clean grid electricity, requiring a mere 5% of the energy needed for new raw bauxite extraction.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-num">4</div>
+                        <div>
+                            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.4rem;">Back on the Shelf in 60 Days</h3>
+                            <p style="color: var(--muted-color); font-size: 0.95rem; line-height: 1.6;">The recycled aluminum is rolled into new can sheets, filled with raywolf soda, and back in your fridge in less than eight weeks.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 5: REVIEWS ================= -->
+        <section class="page-view" id="view-reviews">
+            <div class="subpage-container">
+                <div class="subpage-header">
+                    <span class="subpage-badge">Verified Sipper Feedback</span>
+                    <h2 class="subpage-title">Real Sips, Honest Praise</h2>
+                    <p class="subpage-desc">See what over 14,000 zero-sugar soda lovers have to say about raywolf desgins.</p>
+                </div>
+
+                <div class="reviews-header-block">
+                    <div class="reviews-rating-aggregate">
+                        <div class="big-rating">4.9</div>
+                        <div>
+                            <div class="stars-gold">★★★★★</div>
+                            <div style="font-size: 0.9rem; color: var(--muted-color); margin-top: 0.2rem;">Based on 14,820 verified sips</div>
+                        </div>
+                    </div>
+                    <button class="add-review-btn" id="open-add-review-btn">+ Write a Review</button>
+                </div>
+
+                <div class="reviews-filter-tabs">
+                    <button class="filter-tab active" data-filter="all">All Reviews (14.8k)</button>
+                    <button class="filter-tab" data-filter="classic">Diet Classic</button>
+                    <button class="filter-tab" data-filter="blue">Zero Lime</button>
+                    <button class="filter-tab" data-filter="5star">5 Stars Only</button>
+                </div>
+
+                <div class="reviews-grid" id="reviews-container">
+                    <!-- Review 1 -->
+                    <div class="review-card" data-flavor="classic" data-stars="5">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">MR</div>
+                            <div>
+                                <div class="reviewer-name">Marcus Ray <span class="verified-badge">✓ Verified Buyer</span></div>
+                                <div class="stars-gold" style="font-size: 1rem;">★★★★★</div>
+                            </div>
+                        </div>
+                        <div class="review-flavor-tag">Diet Classic • 24-Pack</div>
+                        <p class="review-text">"I have tried literally every diet and zero-sugar soda on the market. Most have that sickening aspartame aftertaste that lingers for hours. Raywolf tastes like fresh squeezed key lime and crisp sparkling spring water. Absolutely top tier."</p>
+                        <button class="helpful-btn" onclick="upvoteReview(this)">👍 Helpful (42)</button>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="review-card" data-flavor="blue" data-stars="5">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #0284c7, #38bdf8);">SK</div>
+                            <div>
+                                <div class="reviewer-name">Sarah Kim <span class="verified-badge">✓ Verified Buyer</span></div>
+                                <div class="stars-gold" style="font-size: 1rem;">★★★★★</div>
+                            </div>
+                        </div>
+                        <div class="review-flavor-tag">Zero Lime • 12-Pack</div>
+                        <p class="review-text">"The Zero Lime flavor is unbelievable. It has this electric blueberry citrus finish that feels so premium. Also huge props for the 100% recyclable aluminum packaging without any plastic wraps!"</p>
+                        <button class="helpful-btn" onclick="upvoteReview(this)">👍 Helpful (38)</button>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="review-card" data-flavor="classic" data-stars="5">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">JL</div>
+                            <div>
+                                <div class="reviewer-name">Jordan Lee <span class="verified-badge">✓ Verified Buyer</span></div>
+                                <div class="stars-gold" style="font-size: 1rem;">★★★★★</div>
+                            </div>
+                        </div>
+                        <div class="review-flavor-tag">Diet Classic • 48-Pack</div>
+                        <p class="review-text">"Ordered the 48-pack for our design studio fridge. It was gone in 3 days. The carbonation is so crisp it wakes you right up during afternoon meetings without any sugar crash. Subscribe & save customer for life."</p>
+                        <button class="helpful-btn" onclick="upvoteReview(this)">👍 Helpful (61)</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 4. Interactive Cart / Shop Drawer -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <aside class="cart-drawer" id="cart-drawer">
+        <div class="drawer-header">
+            <h2>Your Refreshment Cart</h2>
+            <button class="close-drawer-btn" id="close-cart-btn">✕</button>
+        </div>
+
+        <div class="drawer-content">
+            <!-- Active Cart Item -->
+            <div class="cart-item-card">
+                <img id="cart-item-image" class="cart-item-img" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/Green%20Soda.png" alt="Can">
+                <div class="cart-item-details">
+                    <div class="cart-item-title" id="cart-product-title">Diet Classic Soda</div>
+                    <div class="cart-item-pack" id="cart-pack-label">24-Pack (Save 12%)</div>
+                    <div class="cart-item-price" id="cart-item-price-display">$52.99</div>
+                    <div class="pack-options">
+                        <button class="pack-option-btn" data-pack="12" data-price="29.99">12pk ($29.99)</button>
+                        <button class="pack-option-btn selected" data-pack="24" data-price="52.99">24pk ($52.99)</button>
+                        <button class="pack-option-btn" data-pack="48" data-price="89.99">48pk ($89.99)</button>
+                    </div>
+                </div>
+                <div class="cart-qty-ctrl">
+                    <button class="qty-btn" id="qty-minus">-</button>
+                    <span id="qty-count" style="font-weight: 700; font-size: 0.95rem;">1</span>
+                    <button class="qty-btn" id="qty-plus">+</button>
+                </div>
+            </div>
+
+            <!-- Flavor selection inside cart -->
+            <div style="background: rgba(255,255,255,0.04); padding: 1.2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
+                <div style="font-size: 0.85rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--muted-color);">CHOOSE FLAVOR RECIPE:</div>
+                <div style="display: flex; gap: 0.8rem;">
+                    <button class="flavor-tab-btn active" id="cart-flavor-classic" style="padding: 0.5rem 1rem; font-size: 0.8rem; flex: 1;">Diet Classic</button>
+                    <button class="flavor-tab-btn" id="cart-flavor-blue" style="padding: 0.5rem 1rem; font-size: 0.8rem; flex: 1;">Zero Lime</button>
+                </div>
+            </div>
+
+            <!-- Promo Code Box -->
+            <div class="promo-block">
+                <input type="text" class="promo-input" id="promo-code-input" placeholder="Promo code (e.g. REFRESH10)">
+                <button class="promo-apply-btn" id="apply-promo-btn">Apply</button>
+            </div>
+            <div id="promo-status" style="font-size: 0.8rem; display: none;"></div>
+        </div>
+
+        <div class="drawer-footer">
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="subtotal-display">$52.99</span>
+            </div>
+            <div class="summary-row">
+                <span>Carbon-Neutral Shipping</span>
+                <span id="shipping-display" style="color: #34d399;">FREE</span>
+            </div>
+            <div class="summary-row" id="discount-row" style="display: none; color: var(--pink-accent);">
+                <span>Discount (REFRESH10 - 10%)</span>
+                <span id="discount-display">-$5.30</span>
+            </div>
+            <div class="summary-row total-row">
+                <span>Total</span>
+                <span id="total-display">$52.99</span>
+            </div>
+            <button class="checkout-submit-btn" id="proceed-checkout-btn">
+                <span>Complete Order</span>
+                <span>➔</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- 5. Interactive Checkout Modal -->
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal-card">
+            <button class="modal-close-btn" id="close-checkout-modal">✕</button>
+            <div id="checkout-form-content">
+                <h3 class="modal-title">Express Checkout</h3>
+                <p class="modal-subtitle">Secure 256-bit encrypted checkout powered by raywolf desgins.</p>
+
+                <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-input" required placeholder="Alex Morgan" value="Jordan Smith">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Shipping Address</label>
+                        <input type="text" class="form-input" required placeholder="742 Evergreen Terrace, Suite 4B" value="1200 Grand Ave">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label class="form-label">City, State</label>
+                            <input type="text" class="form-input" required placeholder="Seattle, WA" value="San Francisco, CA">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Zip Code</label>
+                            <input type="text" class="form-input" required placeholder="98101" value="94107">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Payment Card</label>
+                        <input type="text" class="form-input" required placeholder="•••• •••• •••• 4242" value="4242 •••• •••• 8821">
+                    </div>
+
+                    <button type="submit" class="modal-submit-btn" id="pay-now-btn">Pay <span id="pay-now-amount">$52.99</span> & Ship Now</button>
+                </form>
+            </div>
+
+            <!-- Order Confirmation -->
+            <div class="success-box" id="checkout-success">
+                <div class="success-icon">🎉</div>
+                <h3 style="font-family: var(--font-nav); font-size: 1.8rem; font-weight: 800; margin-bottom: 0.6rem;">Order Confirmed!</h3>
+                <p style="color: var(--muted-color); line-height: 1.6; margin-bottom: 1.5rem;">Thank you! Your cold batch is being prepared at our solar-powered facility.<br>Tracking details sent to your email.</p>
+                <div style="background: rgba(255,255,255,0.06); padding: 1rem; border-radius: 12px; margin-bottom: 1.5rem; font-family: monospace; font-size: 1.1rem; color: var(--pink-accent);">
+                    Order #RW-98241
+                </div>
+                <button class="modal-submit-btn" onclick="closeAllModals()">Continue Exploring</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Interactive Contact Modal -->
+    <div class="modal-overlay" id="contact-modal">
+        <div class="modal-card">
+            <button class="modal-close-btn" id="close-contact-modal">✕</button>
+            <div id="contact-form-content">
+                <h3 class="modal-title">Get in Touch</h3>
+                <p class="modal-subtitle">Have a question or wholesale inquiry? Our design & beverage team is here to assist.</p>
+
+                <form id="contact-form" onsubmit="handleContactSubmit(event)">
+                    <div class="form-group">
+                        <label class="form-label">Your Name</label>
+                        <input type="text" class="form-input" id="contact-name" required placeholder="Elena Rostova">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" id="contact-email" required placeholder="elena@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Subject</label>
+                        <select class="form-select" id="contact-subject">
+                            <option>Wholesale & Retail Distribution</option>
+                            <option>General Inquiries & Feedback</option>
+                            <option>Press & Media Relations</option>
+                            <option>Custom Events & Sponsorship</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-textarea" id="contact-msg" required placeholder="Tell us how we can collaborate..."></textarea>
+                    </div>
+                    <button type="submit" class="modal-submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <div class="success-box" id="contact-success">
+                <div class="success-icon">✉️</div>
+                <h3 style="font-family: var(--font-nav); font-size: 1.8rem; font-weight: 800; margin-bottom: 0.6rem;">Message Dispatched!</h3>
+                <p style="color: var(--muted-color); line-height: 1.6; margin-bottom: 1.5rem;">Thanks for reaching out to <strong>raywolf desgins</strong>. One of our beverage architects will respond within 24 hours.</p>
+                <button class="modal-submit-btn" onclick="closeAllModals()">Back to Site</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. Interactive Write Review Modal -->
+    <div class="modal-overlay" id="review-modal">
+        <div class="modal-card">
+            <button class="modal-close-btn" id="close-review-modal">✕</button>
+            <div id="review-form-content">
+                <h3 class="modal-title">Share Your Experience</h3>
+                <p class="modal-subtitle">Rate and review your cold sips of raywolf desgins soda.</p>
+
+                <form id="review-form" onsubmit="handleReviewSubmit(event)">
+                    <div class="form-group">
+                        <label class="form-label">Rating</label>
+                        <div class="star-picker" id="star-picker">
+                            <span class="active" data-val="1">★</span>
+                            <span class="active" data-val="2">★</span>
+                            <span class="active" data-val="3">★</span>
+                            <span class="active" data-val="4">★</span>
+                            <span class="active" data-val="5">★</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Your Name</label>
+                        <input type="text" class="form-input" id="new-reviewer-name" required placeholder="Alex P.">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Flavor Reviewed</label>
+                        <select class="form-select" id="new-review-flavor">
+                            <option value="classic">Diet Classic (Teal)</option>
+                            <option value="blue">Zero Lime (Blue)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Your Review</label>
+                        <textarea class="form-textarea" id="new-review-text" required placeholder="Tell others how it tasted, the carbonation crispness, and your favorite moments..."></textarea>
+                    </div>
+                    <button type="submit" class="modal-submit-btn">Post Verified Review</button>
+                </form>
+            </div>
+
+            <div class="success-box" id="review-success">
+                <div class="success-icon">⭐</div>
+                <h3 style="font-family: var(--font-nav); font-size: 1.8rem; font-weight: 800; margin-bottom: 0.6rem;">Review Published!</h3>
+                <p style="color: var(--muted-color); line-height: 1.6; margin-bottom: 1.5rem;">Your review has been verified and added to the community wall. Cheers!</p>
+                <button class="modal-submit-btn" onclick="closeAllModals()">View Reviews</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Frosted-Glass SVG Filter + Model Preload -->
+    <svg style="position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none;">
+        <filter id="frosted">
+            <feTurbulence type="fractalNoise" baseFrequency="0.0125" numOctaves="3" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="80" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+    </svg>
+    <div style="display: none;">
+        <model-viewer src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/blueberry.glb"></model-viewer>
+        <model-viewer src="https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/cherry.glb"></model-viewer>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // ================= SPA VIEW ROUTING =================
+        const navLinks = document.querySelectorAll('.nav-item');
+        const pageViews = document.querySelectorAll('.page-view');
+
+        function switchView(viewId) {
+            pageViews.forEach(view => {
+                view.classList.remove('active-view');
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            const targetView = document.getElementById(viewId);
+            if (targetView) {
+                targetView.classList.add('active-view');
+            }
+
+            const activeLink = document.querySelector(`.nav-item[data-view="${viewId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+
+        // Handle clicks on header navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetViewId = link.dataset.view;
+                const hash = link.getAttribute('href');
+                history.pushState(null, null, hash);
+                switchView(targetViewId);
+            });
+        });
+
+        document.getElementById('brand-logo').addEventListener('click', (e) => {
+            e.preventDefault();
+            history.pushState(null, null, '#home');
+            switchView('view-home');
+        });
+
+        // Router on URL Hash Change & Initial Load
+        function handleHashRoute() {
+            const hash = window.location.hash.toLowerCase() || '#home';
+            const routes = {
+                '#home': 'view-home',
+                '#ingredients': 'view-ingredients',
+                '#taste': 'view-taste',
+                '#eco': 'view-eco',
+                '#reviews': 'view-reviews',
+                '#shop': 'view-home',
+                '#contact': 'view-home'
+            };
+
+            const viewId = routes[hash] || 'view-home';
+            switchView(viewId);
+
+            if (hash === '#shop') {
+                openCart();
+            } else if (hash === '#contact') {
+                openContact();
+            }
+        }
+
+        window.addEventListener('popstate', handleHashRoute);
+        window.addEventListener('DOMContentLoaded', handleHashRoute);
+
+
+        // ================= 3D MODEL & CAN ANIMATION =================
+        const modelViewer = document.querySelector('#product-model');
+        const berriesFG = document.querySelector('.berries-container');
+        const berriesBG = document.querySelector('.berries-container-bg');
+        const leavesBG = document.querySelector('.leaves-container');
+        const allBerries = document.querySelectorAll('.berry');
+        const cards = document.querySelectorAll('.card');
+        const navArrows = document.querySelectorAll('.nav-arrow');
+        let isSwitching = false;
+        let switchSpin = 0;
+        let blueTexture = null;
+        let greenTexture = null;
+
+        const BLUEBERRY_GLB_URL = 'https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/blueberry.glb';
+        const CHERRY_GLB_URL = 'https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/cherry.glb';
+
+        // Preload textures & Warm up shaders
+        modelViewer.addEventListener('load', async () => {
+            try {
+                blueTexture = await modelViewer.createTexture('https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/blue%20base%20color.jpg');
+                greenTexture = await modelViewer.createTexture('https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/green%20base%20color.jpg');
+
+                if (modelViewer.model) {
+                    const material = modelViewer.model.materials[0];
+                    if (material && material.pbrMetallicRoughness.baseColorTexture) {
+                        material.pbrMetallicRoughness.baseColorTexture.setTexture(blueTexture);
+                        await new Promise(r => requestAnimationFrame(r));
+                        material.pbrMetallicRoughness.baseColorTexture.setTexture(greenTexture);
+                    }
+                }
+            } catch (e) { console.error("Texture preload failed", e); }
+        });
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                if (isSwitching) return;
+                cards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                const flavor = card.dataset.flavor;
+                switchFlavor(flavor);
+            });
+        });
+
+        navArrows.forEach(arrow => {
+            arrow.addEventListener('click', () => {
+                if (isSwitching) return;
+                const activeCard = document.querySelector('.card.active');
+                const nextCard = activeCard.dataset.flavor === 'classic' 
+                    ? document.querySelector('.card[data-flavor="blue"]') 
+                    : document.querySelector('.card[data-flavor="classic"]');
+                if (nextCard) nextCard.click();
+            });
+        });
+
+        async function switchFlavor(flavor) {
+            if (isSwitching) return;
+            isSwitching = true;
+            const body = document.body;
+            const berries = document.querySelectorAll('.berry');
+            const heroCenter = document.querySelector('.hero-center');
+
+            const targetColors = flavor === 'blue' ?
+                { inner: '#0b4f8a', mid: '#04294e', outer: '#010c14' } :
+                { inner: '#0b8a78', mid: '#044e3b', outer: '#011411' };
+
+            gsap.to(body, {
+                '--bg-inner': targetColors.inner,
+                '--bg-mid': targetColors.mid,
+                '--bg-outer': targetColors.outer,
+                duration: 1.5,
+                ease: 'power2.inOut'
+            });
+
+            // Sync cart state
+            updateCartFlavor(flavor);
+
+            // Can Spin Animation (720 spin + blur with back settle)
+            const spinObj = { val: 0, blur: 0 };
+            gsap.to(spinObj, {
+                val: 360,
+                blur: 15,
+                duration: 0.6,
+                ease: "power2.in",
+                onUpdate: () => {
+                    switchSpin = spinObj.val;
+                    modelViewer.style.filter = `blur(${spinObj.blur}px)`;
+                },
+                onComplete: async () => {
+                    if (flavor === 'blue') {
+                        body.classList.add('blue-theme');
+                        if (modelViewer.model && blueTexture) {
+                            modelViewer.model.materials.forEach(material => {
+                                if (material.pbrMetallicRoughness.baseColorTexture) {
+                                    material.pbrMetallicRoughness.baseColorTexture.setTexture(blueTexture);
+                                }
+                            });
+                        }
+                    } else {
+                        body.classList.remove('blue-theme');
+                        if (modelViewer.model && greenTexture) {
+                            modelViewer.model.materials.forEach(material => {
+                                if (material.pbrMetallicRoughness.baseColorTexture) {
+                                    material.pbrMetallicRoughness.baseColorTexture.setTexture(greenTexture);
+                                }
+                            });
+                        }
+                    }
+
+                    gsap.to(spinObj, {
+                        val: 720,
+                        blur: 0,
+                        duration: 1.5,
+                        ease: "back.out(0.7)",
+                        onUpdate: () => {
+                            switchSpin = spinObj.val;
+                            modelViewer.style.filter = `blur(${spinObj.blur}px)`;
+                        },
+                        onComplete: () => {
+                            switchSpin = 0;
+                            modelViewer.style.filter = 'none';
+                        }
+                    });
+                }
+            });
+
+            // Berries implosion / explosion
+            let completedBerries = 0;
+            berries.forEach((berry) => {
+                const bW = berry.offsetWidth / 2;
+                const bH = berry.offsetHeight / 2;
+                const centerX = (window.innerWidth / 2 - berry.offsetLeft - bW);
+                const centerY = (window.innerHeight / 2 - berry.offsetTop - bH);
+
+                const startAngle = parseFloat(berry.dataset.angle) || 0;
+                const currentBaseX = parseFloat(berry.dataset.baseX) || 0;
+                const currentBaseY = parseFloat(berry.dataset.baseY) || 0;
+
+                const nextBaseX = (Math.random() - 0.5) * 200;
+                const nextBaseY = (Math.random() - 0.5) * 200;
+
+                gsap.set(berry, {
+                    rotation: startAngle,
+                    x: currentBaseX,
+                    y: currentBaseY
+                });
+
+                const berryTl = gsap.timeline();
+
+                berryTl.to(berry, {
+                    x: centerX,
+                    y: centerY,
+                    rotation: startAngle + 45,
+                    scale: 0.1,
+                    opacity: 0,
+                    duration: 0.5,
+                    ease: "power2.in",
+                    onComplete: () => {
+                        berry.src = flavor === 'blue' ? BLUEBERRY_GLB_URL : CHERRY_GLB_URL;
+                        heroCenter.style.zIndex = 50;
+                    }
+                })
+                .to(berry, {
+                    duration: 0.3
+                })
+                .to(berry, {
+                    onStart: () => {
+                        heroCenter.style.zIndex = 1;
+                    },
+                    x: nextBaseX,
+                    y: nextBaseY,
+                    rotation: startAngle + 90,
+                    scale: 1,
+                    opacity: 1,
+                    duration: 0.9,
+                    ease: "back.out(1.5)",
+                    onComplete: () => {
+                        berry.dataset.angle = startAngle + 90;
+                        berry.dataset.baseX = nextBaseX;
+                        berry.dataset.baseY = nextBaseY;
+                        berry.dataset.rx = 0;
+                        berry.dataset.ry = 0;
+
+                        completedBerries++;
+                        if (completedBerries === berries.length) {
+                            isSwitching = false;
+                        }
+                    }
+                });
+            });
+        }
+
+        allBerries.forEach(b => {
+            b.dataset.rx = 0; b.dataset.ry = 0; b.dataset.angle = Math.random() * 360;
+            b.dataset.baseX = 0; b.dataset.baseY = 0;
+        });
+
+        let mouse = { x: 0, y: 0, px: 0, py: 0 };
+        let currentMouse = { x: 0, y: 0 };
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = (e.clientX / window.innerWidth) - 0.5;
+            mouse.y = (e.clientY / window.innerHeight) - 0.5;
+            mouse.px = e.clientX;
+            mouse.py = e.clientY;
+        });
+
+        function animate() {
+            const time = Date.now() * 0.001;
+            currentMouse.x += (mouse.x - currentMouse.x) * 0.05;
+            currentMouse.y += (mouse.y - currentMouse.y) * 0.05;
+
+            // Tilt product can
+            if (modelViewer) {
+                modelViewer.cameraOrbit = `${(currentMouse.x * 40) + switchSpin}deg ${90 + (currentMouse.y * 20)}deg 380%`;
+            }
+
+            // Parallax containers
+            if (berriesFG) berriesFG.style.transform = `translate(${currentMouse.x * 60}px, ${currentMouse.y * 60}px)`;
+            if (berriesBG) berriesBG.style.transform = `translate(${currentMouse.x * -30}px, ${currentMouse.y * -30}px)`;
+            if (leavesBG) leavesBG.style.transform = `translate(${currentMouse.x * -15}px, ${currentMouse.y * -15}px)`;
+
+            // Berries repulsion physics
+            if (!isSwitching) {
+                allBerries.forEach((berry, i) => {
+                    const berryRect = berry.getBoundingClientRect();
+                    const berryX = berryRect.left + berryRect.width / 2;
+                    const berryY = berryRect.top + berryRect.height / 2;
+
+                    const diffX = mouse.px - berryX;
+                    const diffY = mouse.py - berryY;
+                    const distance = Math.sqrt(diffX * diffX + diffY * diffY);
+
+                    let targetRx = 0, targetRy = 0, speedMult = 1;
+
+                    if (distance < 400) {
+                        const force = (400 - distance) / 400;
+                        targetRx = (diffX / distance) * force * -80;
+                        targetRy = (diffY / distance) * force * -80;
+                        speedMult = 1 + force * 5;
+                    }
+
+                    let rx = parseFloat(berry.dataset.rx) || 0;
+                    let ry = parseFloat(berry.dataset.ry) || 0;
+                    let angle = parseFloat(berry.dataset.angle) || 0;
+                    let baseX = parseFloat(berry.dataset.baseX) || 0;
+                    let baseY = parseFloat(berry.dataset.baseY) || 0;
+
+                    rx += (targetRx - rx) * 0.1;
+                    ry += (targetRy - ry) * 0.1;
+                    angle += 0.2 * speedMult;
+
+                    berry.dataset.rx = rx;
+                    berry.dataset.ry = ry;
+                    berry.dataset.angle = angle;
+
+                    const dur = [5, 7, 6, 8, 5.5, 6.5, 9, 11, 10][i % 9];
+                    const phase = (time + i * 0.7) * (Math.PI * 2 / dur);
+                    const floatY = Math.sin(phase) * 15;
+                    const floatAngle = Math.cos(phase) * 6;
+
+                    berry.style.transform = `translate(calc(${rx + baseX}px), calc(${ry + baseY}px + ${floatY}px)) rotate(calc(${angle}deg + ${floatAngle}deg))`;
+                });
+            }
+
+            // Leaves gentle drift
+            document.querySelectorAll('.leaf').forEach((leaf, i) => {
+                const dur = 10 + i * 2;
+                const phase = (time + i * 1.2) * (Math.PI * 2 / dur);
+                const floatY = Math.sin(phase) * 20;
+                const floatX = Math.cos(phase * 0.5) * 15;
+                const floatAngle = Math.sin(phase * 0.3) * 15;
+                leaf.style.transform = `translate(${floatX}px, ${floatY}px) rotate(${floatAngle}deg)`;
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Procedural Bubbles
+        const bubblesContainer = document.getElementById('bubbles-container');
+        function createBubble() {
+            if (!bubblesContainer) return;
+            const bubble = document.createElement('img');
+            bubble.src = 'https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/bubble.png';
+            bubble.className = 'bubble-img';
+            const size = Math.random() * 20 + 10 + 'px';
+            bubble.style.width = size;
+            bubble.style.height = 'auto';
+            bubble.style.left = Math.random() * 100 + '%';
+            bubble.style.bottom = '-50px';
+            bubble.style.opacity = Math.random() * 0.4 + 0.2;
+
+            const duration = Math.random() * 6 + 4;
+            bubble.style.animation = `floatUpImg ${duration}s linear forwards`;
+
+            bubblesContainer.appendChild(bubble);
+            setTimeout(() => bubble.remove(), duration * 1000);
+        }
+        setInterval(createBubble, 400);
+
+
+        // ================= TASTE PROFILER INTERACTIVITY =================
+        const tasteTabClassic = document.getElementById('taste-tab-classic');
+        const tasteTabBlue = document.getElementById('taste-tab-blue');
+
+        const tasteMetrics = {
+            classic: [
+                { label: 'Crispness & Effervescence', val: '98%', width: '98%' },
+                { label: 'Citrus Zest & Zing', val: '92%', width: '92%' },
+                { label: 'Berry Botanical Notes', val: '78%', width: '78%' },
+                { label: 'Clean Palate Finish (No Film)', val: '99%', width: '99%' }
+            ],
+            blue: [
+                { label: 'Electric Berry Snap', val: '97%', width: '97%' },
+                { label: 'Lime Pucker & Tang', val: '94%', width: '94%' },
+                { label: 'Cool Mint Undertone', val: '84%', width: '84%' },
+                { label: 'Clean Palate Finish (No Film)', val: '98%', width: '98%' }
+            ]
+        };
+
+        function setTasteFlavor(flavor) {
+            if (flavor === 'classic') {
+                tasteTabClassic.classList.add('active');
+                tasteTabBlue.classList.remove('active');
+            } else {
+                tasteTabBlue.classList.add('active');
+                tasteTabClassic.classList.remove('active');
+            }
+
+            const data = tasteMetrics[flavor];
+            for (let i = 1; i <= 4; i++) {
+                const item = data[i - 1];
+                document.getElementById(`metric-label-${i}`).textContent = item.label;
+                document.getElementById(`metric-val-${i}`).textContent = item.val;
+                const bar = document.getElementById(`bar-${i}`);
+                bar.style.width = item.width;
+                if (flavor === 'blue') {
+                    bar.classList.add('blue-fill');
+                } else {
+                    bar.classList.remove('blue-fill');
+                }
+            }
+        }
+
+        tasteTabClassic.addEventListener('click', () => setTasteFlavor('classic'));
+        tasteTabBlue.addEventListener('click', () => setTasteFlavor('blue'));
+
+
+        // ================= CART & CHECKOUT LOGIC =================
+        const cartOverlay = document.getElementById('cart-overlay');
+        const cartDrawer = document.getElementById('cart-drawer');
+        const openCartBtn = document.getElementById('open-cart-btn');
+        const closeCartBtn = document.getElementById('close-cart-btn');
+        const heroShopBtn = document.getElementById('hero-shop-btn');
+
+        let cartState = {
+            flavor: 'classic',
+            pack: 24,
+            unitPrice: 52.99,
+            quantity: 1,
+            discount: 0
+        };
+
+        function openCart() {
+            cartOverlay.classList.add('open');
+            cartDrawer.classList.add('open');
+        }
+
+        function closeCart() {
+            cartOverlay.classList.remove('open');
+            cartDrawer.classList.remove('open');
+        }
+
+        openCartBtn.addEventListener('click', openCart);
+        closeCartBtn.addEventListener('click', closeCart);
+        cartOverlay.addEventListener('click', closeCart);
+        heroShopBtn.addEventListener('click', openCart);
+
+        function updateCartFlavor(flavor) {
+            cartState.flavor = flavor;
+            const imgEl = document.getElementById('cart-item-image');
+            const titleEl = document.getElementById('cart-product-title');
+            const classicBtn = document.getElementById('cart-flavor-classic');
+            const blueBtn = document.getElementById('cart-flavor-blue');
+
+            if (flavor === 'blue') {
+                imgEl.src = 'https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/Blue%20Soda.png';
+                titleEl.textContent = 'Zero Lime Soda';
+                blueBtn.classList.add('active');
+                classicBtn.classList.remove('active');
+            } else {
+                imgEl.src = 'https://api.getlayers.ai/storage/v1/object/public/public/assets/soda-14ff8a788d/Green%20Soda.png';
+                titleEl.textContent = 'Diet Classic Soda';
+                classicBtn.classList.add('active');
+                blueBtn.classList.remove('active');
+            }
+            renderCartSummary();
+        }
+
+        document.getElementById('cart-flavor-classic').addEventListener('click', () => {
+            updateCartFlavor('classic');
+            const card = document.querySelector('.card[data-flavor="classic"]');
+            if (card) card.click();
+        });
+
+        document.getElementById('cart-flavor-blue').addEventListener('click', () => {
+            updateCartFlavor('blue');
+            const card = document.querySelector('.card[data-flavor="blue"]');
+            if (card) card.click();
+        });
+
+        // Pack selection
+        document.querySelectorAll('.pack-option-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.pack-option-btn').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                cartState.pack = parseInt(btn.dataset.pack);
+                cartState.unitPrice = parseFloat(btn.dataset.price);
+
+                const labelMap = {
+                    12: '12-Pack (Standard)',
+                    24: '24-Pack (Save 12%)',
+                    48: '48-Pack (Save 25% + Free Ship)'
+                };
+                document.getElementById('cart-pack-label').textContent = labelMap[cartState.pack];
+                document.getElementById('cart-item-price-display').textContent = `$${cartState.unitPrice.toFixed(2)}`;
+                renderCartSummary();
+            });
+        });
+
+        // Qty Controls
+        document.getElementById('qty-plus').addEventListener('click', () => {
+            cartState.quantity++;
+            document.getElementById('qty-count').textContent = cartState.quantity;
+            document.getElementById('cart-count').textContent = cartState.quantity;
+            renderCartSummary();
+        });
+
+        document.getElementById('qty-minus').addEventListener('click', () => {
+            if (cartState.quantity > 1) {
+                cartState.quantity--;
+                document.getElementById('qty-count').textContent = cartState.quantity;
+                document.getElementById('cart-count').textContent = cartState.quantity;
+                renderCartSummary();
+            }
+        });
+
+        // Promo Code
+        document.getElementById('apply-promo-btn').addEventListener('click', () => {
+            const input = document.getElementById('promo-code-input').value.trim().toUpperCase();
+            const status = document.getElementById('promo-status');
+            status.style.display = 'block';
+
+            if (input === 'REFRESH10') {
+                cartState.discount = 0.10;
+                status.style.color = '#34d399';
+                status.textContent = '✓ 10% Refreshment Discount Applied!';
+            } else if (input === '') {
+                cartState.discount = 0;
+                status.style.display = 'none';
+            } else {
+                cartState.discount = 0;
+                status.style.color = '#f87171';
+                status.textContent = 'Invalid promo code. Try "REFRESH10"';
+            }
+            renderCartSummary();
+        });
+
+        function renderCartSummary() {
+            const subtotal = cartState.unitPrice * cartState.quantity;
+            const discountAmount = subtotal * cartState.discount;
+            const total = subtotal - discountAmount;
+
+            document.getElementById('subtotal-display').textContent = `$${subtotal.toFixed(2)}`;
+            if (cartState.discount > 0) {
+                document.getElementById('discount-row').style.display = 'flex';
+                document.getElementById('discount-display').textContent = `-$${discountAmount.toFixed(2)}`;
+            } else {
+                document.getElementById('discount-row').style.display = 'none';
+            }
+            document.getElementById('total-display').textContent = `$${total.toFixed(2)}`;
+            document.getElementById('pay-now-amount').textContent = `$${total.toFixed(2)}`;
+        }
+
+
+        // ================= MODALS MANAGEMENT =================
+        const contactModal = document.getElementById('contact-modal');
+        const checkoutModal = document.getElementById('checkout-modal');
+        const reviewModal = document.getElementById('review-modal');
+
+        function openContact() {
+            contactModal.classList.add('open');
+        }
+
+        function closeAllModals() {
+            document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('open'));
+        }
+
+        document.getElementById('open-contact-btn').addEventListener('click', openContact);
+        document.getElementById('close-contact-modal').addEventListener('click', closeAllModals);
+        document.getElementById('close-checkout-modal').addEventListener('click', closeAllModals);
+        document.getElementById('close-review-modal').addEventListener('click', closeAllModals);
+
+        document.getElementById('proceed-checkout-btn').addEventListener('click', () => {
+            closeCart();
+            checkoutModal.classList.add('open');
+        });
+
+        document.getElementById('open-add-review-btn').addEventListener('click', () => {
+            reviewModal.classList.add('open');
+        });
+
+        // Confetti celebration helper
+        function triggerConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 80,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
+        }
+
+        // Checkout submit
+        function handleCheckoutSubmit(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('pay-now-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Authorizing payment...';
+
+            setTimeout(() => {
+                document.getElementById('checkout-form-content').style.display = 'none';
+                document.getElementById('checkout-success').style.display = 'block';
+                triggerConfetti();
+                // Reset cart count
+                cartState.quantity = 1;
+                document.getElementById('cart-count').textContent = '0';
+            }, 1200);
+        }
+
+        // Contact submit
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            document.getElementById('contact-form-content').style.display = 'none';
+            document.getElementById('contact-success').style.display = 'block';
+            triggerConfetti();
+        }
+
+        // Reviews Star Picker
+        const starSpans = document.querySelectorAll('#star-picker span');
+        let selectedRating = 5;
+        starSpans.forEach(star => {
+            star.addEventListener('click', () => {
+                selectedRating = parseInt(star.dataset.val);
+                starSpans.forEach(s => {
+                    if (parseInt(s.dataset.val) <= selectedRating) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Review submit
+        function handleReviewSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('new-reviewer-name').value;
+            const flavor = document.getElementById('new-review-flavor').value;
+            const text = document.getElementById('new-review-text').value;
+
+            // Prepend new review card
+            const container = document.getElementById('reviews-container');
+            const newCard = document.createElement('div');
+            newCard.className = 'review-card';
+            newCard.dataset.flavor = flavor;
+            newCard.dataset.stars = selectedRating;
+
+            const starsStr = '★'.repeat(selectedRating) + '☆'.repeat(5 - selectedRating);
+            const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) || 'RW';
+
+            newCard.innerHTML = `
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar" style="background: linear-gradient(135deg, #10b981, var(--pink-accent));">${initials}</div>
+                    <div>
+                        <div class="reviewer-name">${name} <span class="verified-badge">✓ Verified Buyer</span></div>
+                        <div class="stars-gold" style="font-size: 1rem;">${starsStr}</div>
+                    </div>
+                </div>
+                <div class="review-flavor-tag">${flavor === 'blue' ? 'Zero Lime' : 'Diet Classic'} • Verified Order</div>
+                <p class="review-text">"${text}"</p>
+                <button class="helpful-btn" onclick="upvoteReview(this)">👍 Helpful (1)</button>
+            `;
+
+            container.prepend(newCard);
+
+            document.getElementById('review-form-content').style.display = 'none';
+            document.getElementById('review-success').style.display = 'block';
+            triggerConfetti();
+        }
+
+        // Helpful upvote
+        window.upvoteReview = function(btn) {
+            const current = parseInt(btn.textContent.replace(/[^0-9]/g, '')) || 0;
+            btn.textContent = `👍 Helpful (${current + 1})`;
+            btn.style.color = '#34d399';
+            btn.style.borderColor = '#34d399';
+        };
+
+        // Reviews Filter Tabs
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const filter = tab.dataset.filter;
+
+                document.querySelectorAll('.review-card').forEach(card => {
+                    if (filter === 'all') {
+                        card.style.display = 'flex';
+                    } else if (filter === 'classic') {
+                        card.style.display = card.dataset.flavor === 'classic' ? 'flex' : 'none';
+                    } else if (filter === 'blue') {
+                        card.style.display = card.dataset.flavor === 'blue' ? 'flex' : 'none';
+                    } else if (filter === '5star') {
+                        card.style.display = card.dataset.stars === '5' ? 'flex' : 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco & Sustainability | raywolf desgins</title>
+    <meta name="description" content="Earth-First Refreshment. Circularity without end with 100% infinitely recyclable aluminum cans.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Galada&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #ffffff;
+            --muted-color: rgba(255, 255, 255, 0.7);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --pink-accent: #fbcfe8;
+            --pink-accent-dark: #011d17;
+            --font-main: 'Inter', sans-serif;
+            --font-heading: 'Galada', cursive;
+            --font-nav: 'Manrope', sans-serif;
+            --bg-inner: #0b8a78;
+            --bg-mid: #044e3b;
+            --bg-outer: #011411;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: radial-gradient(circle at center, var(--bg-inner) 0%, var(--bg-mid) 50%, var(--bg-outer) 100%);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.8rem 4%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 200;
+            backdrop-filter: blur(15px);
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 700;
+            font-size: 1.3rem;
+            font-family: var(--font-heading);
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .nav {
+            display: flex;
+            gap: 0.4rem;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0.35rem 0.5rem;
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+        }
+        .nav-item {
+            font-family: var(--font-nav);
+            color: var(--muted-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.5rem 1.15rem;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+        }
+        .nav-item:hover, .nav-item.active {
+            background: var(--pink-accent);
+            color: var(--pink-accent-dark);
+        }
+        .contact-btn {
+            background: rgba(0, 0, 0, 0.55);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.8rem 1.8rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-family: var(--font-nav);
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .subpage-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 9rem 5% 6rem 5%;
+        }
+        .subpage-header { text-align: center; max-width: 800px; margin: 0 auto 3.5rem auto; }
+        .subpage-badge {
+            display: inline-block;
+            background: var(--pink-accent);
+            color: var(--pink-accent-dark);
+            font-family: var(--font-nav);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.35rem 1rem;
+            border-radius: 100px;
+            margin-bottom: 1rem;
+        }
+        .subpage-title {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            line-height: 1;
+            margin-bottom: 1.2rem;
+            font-weight: 400;
+        }
+        .subpage-desc { font-size: 1.15rem; color: var(--muted-color); line-height: 1.7; }
+        .eco-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+        .eco-metric-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 2.2rem 1.5rem;
+            border-radius: 24px;
+            text-align: center;
+        }
+        .eco-metric-num {
+            font-family: var(--font-nav);
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #34d399;
+            line-height: 1.1;
+        }
+        .eco-metric-label {
+            font-size: 0.9rem;
+            color: var(--muted-color);
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+        .timeline-step {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.8rem 2.2rem;
+            border-radius: 24px;
+            backdrop-filter: blur(15px);
+        }
+        .timeline-num {
+            width: 50px;
+            height: 50px;
+            background: var(--pink-accent);
+            color: var(--pink-accent-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+        @media(max-width: 768px) { .nav { display: none; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                <path d="M12 8V16M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span>raywolf desgins</span>
+        </a>
+        <nav class="nav">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="ingredients.html" class="nav-item">Ingredients</a>
+            <a href="taste.html" class="nav-item">Taste</a>
+            <a href="eco.html" class="nav-item active">Eco</a>
+            <a href="reviews.html" class="nav-item">Reviews</a>
+        </nav>
+        <a href="index.html#shop" class="contact-btn">Shop Now</a>
+    </header>
+
+    <div class="subpage-container">
+        <div class="subpage-header">
+            <span class="subpage-badge">Earth-First Refreshment</span>
+            <h1 class="subpage-title">Circularity Without End</h1>
+            <p class="subpage-desc">Every raywolf desgins can is infinitely recyclable. We never use single-use plastic rings, wrap, or liners. Our cold-chain bottling runs 100% on renewable solar energy.</p>
+        </div>
+
+        <div class="eco-metrics">
+            <div class="eco-metric-card">
+                <div class="eco-metric-num">1.4M+</div>
+                <div class="eco-metric-label">Plastic Bottles Diverted</div>
+            </div>
+            <div class="eco-metric-card">
+                <div class="eco-metric-num">100%</div>
+                <div class="eco-metric-label">Infinitely Recyclable Aluminum</div>
+            </div>
+            <div class="eco-metric-card">
+                <div class="eco-metric-num">95%</div>
+                <div class="eco-metric-label">Energy Saved vs Virgin Bauxite</div>
+            </div>
+            <div class="eco-metric-card">
+                <div class="eco-metric-num">0%</div>
+                <div class="eco-metric-label">Single-Use Plastics in Packaging</div>
+            </div>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline-step">
+                <div class="timeline-num">1</div>
+                <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.4rem;">The Infinitely Recyclable Aluminum Vessel</h3>
+                    <p style="color: var(--muted-color); font-size: 0.95rem; line-height: 1.6;">Aluminum is the undisputed champion of the circular economy. Over 75% of all aluminum ever created in human history is still in productive use today.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-num">2</div>
+                <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.4rem;">Smart Curbside Collection</h3>
+                    <p style="color: var(--muted-color); font-size: 0.95rem; line-height: 1.6;">Once enjoyed, simply place the can into standard municipal recycling. No sorting, peeling, or plastic caps to discard.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-num">3</div>
+                <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.4rem;">Clean Induction Smelting</h3>
+                    <p style="color: var(--muted-color); font-size: 0.95rem; line-height: 1.6;">Shredded and melted in high-efficiency induction furnaces using clean grid electricity, requiring a mere 5% of the energy needed for new raw bauxite extraction.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-num">4</div>
+                <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.4rem;">Back on the Shelf in 60 Days</h3>
+                    <p style="color: var(--muted-color); font-size: 0.95rem; line-height: 1.6;">The recycled aluminum is rolled into new can sheets, filled with raywolf soda, and back in your fridge in less than eight weeks.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

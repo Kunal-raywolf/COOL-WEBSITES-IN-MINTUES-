@@ -1,0 +1,17 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and databases
+*.log
+*.sqlite
+
+# Editor and IDE directories
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test artifacts
+test-screenshot.png
