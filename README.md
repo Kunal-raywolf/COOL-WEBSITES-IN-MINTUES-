@@ -1,15 +1,6 @@
-# raywolf desgins — 3D Soda Interactive Experience
- ███████████     █████████   █████ █████    ██████████   ██████████  █████████    █████████  █████ ██████   █████  █████████ 
-░░███░░░░░███   ███░░░░░███ ░░███ ░░███    ░░███░░░░███ ░░███░░░░░█ ███░░░░░███  ███░░░░░███░░███ ░░██████ ░░███  ███░░░░░███
- ░███    ░███  ░███    ░███  ░░███ ███      ░███   ░░███ ░███  █ ░ ░███    ░░░  ███     ░░░  ░███  ░███░███ ░███ ░███    ░░░ 
- ░██████████   ░███████████   ░░█████       ░███    ░███ ░██████   ░░█████████ ░███          ░███  ░███░░███░███ ░░█████████ 
- ░███░░░░░███  ░███░░░░░███    ░░███        ░███    ░███ ░███░░█    ░░░░░░░░███░███    █████ ░███  ░███ ░░██████  ░░░░░░░░███
- ░███    ░███  ░███    ░███     ░███        ░███    ███  ░███ ░   █ ███    ░███░░███  ░░███  ░███  ░███  ░░█████  ███    ░███
- █████   █████ █████   █████    █████       ██████████   ██████████░░█████████  ░░█████████  █████ █████  ░░█████░░█████████ 
-░░░░░   ░░░░░ ░░░░░   ░░░░░    ░░░░░       ░░░░░░░░░░   ░░░░░░░░░░  ░░░░░░░░░    ░░░░░░░░░  ░░░░░ ░░░░░    ░░░░░  ░░░░░░░░░  
-                                                                                                                             
-                                                                                                                             
-                                                                                                                             
+# raywolf desgins — 3D Soda Interactive Experience 
+<img width="841" height="170" alt="ascii-art-text" src="https://github.com/user-attachments/assets/5cda280d-8adc-4b76-a4c4-03443d4ea8b1" />
+                                                                                                                                                                                                                                                        
 
 Rays Design is a sleek, production-ready website template built for soda brands, cold drink shops, and beverage ecommerce stores. It combines eye-catching 3D product visuals with a clean, conversion-focused storefront layout.
 
